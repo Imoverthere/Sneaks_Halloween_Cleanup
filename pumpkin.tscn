@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://cnbgb07pms7h4"]
+
+[ext_resource type="Texture2D" uid="uid://dn5o53wdxl7dv" path="res://Assets/pumpkin.png" id="1_fy8b1"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xhnv2"]
+radius = 7.0
+height = 14.0
+
+[node name="Pumpkin" type="Node2D" unique_id=624885698]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1539820623]
+position = Vector2(0, -2)
+texture = ExtResource("1_fy8b1")
+region_enabled = true
+region_rect = Rect2(0, 3.658884, 14.537659, 12.528854)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=2097687225]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=641326680]
+position = Vector2(0, -1)
+shape = SubResource("CapsuleShape2D_xhnv2")

@@ -6,7 +6,7 @@
 
 [sub_resource type="Animation" id="Animation_17veb"]
 resource_name = "Attack"
-length = 0.5
+length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -14,10 +14,22 @@ tracks/0/path = NodePath("PlayerAnimator/Sprite2D:region_rect")
 tracks/0/interp = 0
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Rect2(16, 32, 16, 16), Rect2(48, 32, 17.583946, 16), Rect2(80, 32, 16.4077, 17.10878), Rect2(0, 0, 16.408, 17.109)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:attacking")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_08ct4"]
@@ -33,6 +45,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Rect2(16, 0, 16, 16)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:attacking")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_o541c"]
@@ -113,24 +137,25 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xhnv2"]
-size = Vector2(8, 12)
+size = Vector2(7, 12)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fxe0o"]
-radius = 5.0
-height = 12.0
+radius = 6.0
+height = 16.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xhnv2"]
-radius = 5.0
-height = 14.0
+radius = 6.0
+height = 16.0
 
 [node name="Player" type="CharacterBody2D" unique_id=1023615984]
+collision_layer = 3
 script = ExtResource("1_08ct4")
 speed = 5.0
 jump_power = 8.0
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1762089086]
 offset = Vector2(0, -15)
-zoom = Vector2(4.5, 4.5)
+zoom = Vector2(3, 3)
 
 [node name="PlayerAnimator" type="Node2D" parent="." unique_id=1236990081 node_paths=PackedStringArray("player_controller", "animation_player", "sprite")]
 script = ExtResource("2_08ct4")
@@ -153,21 +178,22 @@ region_rect = Rect2(16, 0, 16, 16)
 [node name="SwordHit" type="Area2D" parent="PlayerAnimator/Sprite2D" unique_id=228248952]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerAnimator/Sprite2D/SwordHit" unique_id=908079217]
-position = Vector2(8, 2)
+visibility_layer = 3
+position = Vector2(10, 2)
 shape = SubResource("RectangleShape2D_xhnv2")
-disabled = true
-debug_color = Color(0.5832255, 0.39219746, 0.97793645, 0.41960785)
+debug_color = Color(0.66283226, 0.33563828, 0.96928614, 0.41960785)
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1171076334]
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=776530615]
-position = Vector2(0, -7)
+visibility_layer = 2
+position = Vector2(0, -8)
 shape = SubResource("CapsuleShape2D_fxe0o")
 debug_color = Color(5.8719515e-06, 0.5874505, 0.7687974, 0.41960785)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=414174897]
-position = Vector2(0, -7)
+position = Vector2(0, -8)
 shape = SubResource("CapsuleShape2D_xhnv2")
 debug_color = Color(0.9418479, 0.19901082, 0.36054355, 0.41960785)
 

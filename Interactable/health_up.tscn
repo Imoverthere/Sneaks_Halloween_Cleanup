@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://cgi7kgw62hrms"]
+
+[ext_resource type="Script" uid="uid://bl43e674undjl" path="res://Interactable/health_up.gd" id="1_t77tn"]
+[ext_resource type="Texture2D" uid="uid://vvhc38oat5rj" path="res://Assets/HealthItem.png" id="2_y8k2k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xhnv2"]
+size = Vector2(9, 12)
+
+[node name="HealthUp" type="Node2D" unique_id=2032974459]
+position = Vector2(1, 5)
+script = ExtResource("1_t77tn")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=253727035]
+texture = ExtResource("2_y8k2k")
+region_enabled = true
+region_rect = Rect2(0, 0, 13.588676, 20.394098)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=788722269]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=239030325]
+position = Vector2(-0.5, -5)
+shape = SubResource("RectangleShape2D_xhnv2")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

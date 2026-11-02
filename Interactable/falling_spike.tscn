@@ -1,0 +1,84 @@
+[gd_scene format=3 uid="uid://21qufx0y53x7"]
+
+[ext_resource type="Script" uid="uid://otpg1818pxk2" path="res://Interactable/falling_spike.gd" id="1_k7shb"]
+[ext_resource type="Texture2D" uid="uid://vxpx4jvlwa6b" path="res://Assets/Assets/Sprites/FallingSpike.png" id="1_tqp80"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xhnv2"]
+size = Vector2(16, 114)
+
+[sub_resource type="Animation" id="Animation_k7shb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Sprite2D:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_lnl7a"]
+resource_name = "Shake"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Sprite2D:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 0), Vector2(-1, 0), Vector2(1, 0), Vector2(0, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.33333334),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"fall"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ge8fq"]
+_data = {
+&"RESET": SubResource("Animation_k7shb"),
+&"Shake": SubResource("Animation_lnl7a")
+}
+
+[node name="FallingSpike" type="Node2D" unique_id=1830658955]
+script = ExtResource("1_k7shb")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1946118030]
+texture = ExtResource("1_tqp80")
+offset = Vector2(1, 0)
+region_enabled = true
+region_rect = Rect2(2.2159996, 2.1782477, 12.675419, 14.230682)
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=40208526]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hitbox" unique_id=1000371077]
+polygon = PackedVector2Array(-6, -6, -6, -4, 0, 7, 6, -4, 6, -6)
+
+[node name="PlayerDetect" type="Area2D" parent="." unique_id=1342544346]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetect" unique_id=1744109294]
+position = Vector2(0, 50)
+shape = SubResource("RectangleShape2D_xhnv2")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1597857197]
+root_node = NodePath("../PlayerDetect")
+libraries/ = SubResource("AnimationLibrary_ge8fq")
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="area_entered" from="PlayerDetect" to="." method="_on_player_detect_area_entered"]
