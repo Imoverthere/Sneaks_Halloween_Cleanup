@@ -11,7 +11,7 @@ func _ready() -> void:
 		animation_player.animation_finished.connect(_on_animation_finished)
 
 
-func _process(delta):
+func _process(_delta):
 #	flips the character sprite
 	if player_controller.direction == 1:
 		sprite.flip_h = false
@@ -34,3 +34,21 @@ func _process(delta):
 func _on_animation_finished(anim_name: StringName):
 	if anim_name == "Attack": # Double check this matches your attack animation name exactly
 		player_controller.attacking = false
+
+func flash_iframes(duration: float):
+	if not sprite:
+		return
+		
+	# Create a tween that processes even if things shift frames
+	var tween = create_tween().set_loops(5) # Loops 5 times total
+	
+	# Blink out (semi-transparent), then blink back in (solid) over 0.2 seconds per loop
+	tween.tween_property(sprite, "modulate:a", 0.3, 0.1)
+	tween.tween_property(sprite, "modulate:a", 1.0, 0.1)
+	
+	# Safely force alpha back to 1.0 when the iframe period fully completes
+	await get_tree().create_timer(duration).timeout
+	if is_instance_valid(sprite):
+		sprite.modulate.a = 1.0
+	
+	

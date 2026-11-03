@@ -61,6 +61,13 @@ down={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="World"
+2d_physics/layer_2="Player"
+2d_physics/layer_3="Enemies"
+2d_physics/layer_4="Goal"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"
@@ -70,3 +77,4 @@ down={
 textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
 textures/vram_compression/import_etc2_astc=true
+environment/defaults/default_clear_color=Color(0.16078432, 0.28627452, 0.38431373, 1)

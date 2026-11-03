@@ -17,11 +17,15 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 		
-	if !$RayCast2D.is_colliding() && is_on_floor():
+	# flip the enemy if it reaches a wall or edge
+	if !$EdgeDetection.is_colliding() && is_on_floor():
 		flip()
 		
 	velocity.x = speed
 	move_and_slide()
+	
+	if is_on_wall() and is_on_floor():
+		flip()
 	
 	# CONTINUOUS CHECK: Catch a stationary player if the entry signal missed
 	for area in $Hitbox.get_overlapping_areas():
@@ -39,8 +43,9 @@ func flip():
 	# Flip the visuals instead of the parent scale.x
 	$Sprite2D.flip_h = !facing_right
 	
-	# Manually flip the RayCast2D position so it stays in front of the enemy
-	$RayCast2D.position.x = abs($RayCast2D.position.x) * (1 if facing_right else -1)
+	# Manually flip the Edge & Wall Detectors position so it stays in front of the enemy
+	$EdgeDetection.position.x = abs($EdgeDetection.position.x) * (1 if facing_right else -1)
+	
 	
 	# Manually flip the Hitbox Area2D position if it has an offset
 	$Hitbox.position.x = abs($Hitbox.position.x) * (1 if facing_right else -1)
@@ -68,7 +73,7 @@ size = Vector2(10, 12)
 
 [sub_resource type="Animation" id="Animation_mbxyh"]
 resource_name = "Die"
-length = 0.19999999999999998
+length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -136,7 +141,7 @@ _data = {
 }
 
 [node name="Enemy_1" type="CharacterBody2D" unique_id=1705470891]
-collision_layer = 2
+collision_layer = 4
 script = SubResource("GDScript_mbxyh")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1991168740]
@@ -157,7 +162,7 @@ visibility_layer = 3
 position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_gqj32")
 
-[node name="RayCast2D" type="RayCast2D" parent="." unique_id=612601856]
+[node name="EdgeDetection" type="RayCast2D" parent="." unique_id=612601856]
 position = Vector2(6, 0)
 target_position = Vector2(0, 9)
 

@@ -15,7 +15,7 @@ var max_health = 2
 var health = 0
 var can_take_damage = true
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("Attack"):
 		attack()
 
@@ -82,6 +82,8 @@ func take_damage(damage_amount : int):
 		
 func iframes():
 	can_take_damage = false
+	if has_node("PlayerAnimator"):
+		$PlayerAnimator.flash_iframes(1.0)
 	await get_tree().create_timer(1).timeout
 	can_take_damage = true
 
