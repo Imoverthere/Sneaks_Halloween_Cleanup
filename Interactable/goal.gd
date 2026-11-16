@@ -38,5 +38,6 @@ func open_goal() -> void:
 func _on_goal_area_area_entered(area: Area2D) -> void:
 	# FIX: Check if the incoming area belongs to the PlayerController
 	if area.get_parent() is PlayerController:
+		GameManager.win()
 		print("Level Complete!")
 		# GameManager.load_next_level() or win screen trigger

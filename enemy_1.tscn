@@ -59,6 +59,7 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 	check_and_damage_player(area)
 	
 func die():
+	GameManager.score += 100
 	dead = true
 	speed = 0
 	$AnimationPlayer.play(\"Die\")
@@ -69,7 +70,7 @@ func die():
 size = Vector2(10, 12)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gqj32"]
-size = Vector2(10, 12)
+size = Vector2(12, 14)
 
 [sub_resource type="Animation" id="Animation_mbxyh"]
 resource_name = "Die"

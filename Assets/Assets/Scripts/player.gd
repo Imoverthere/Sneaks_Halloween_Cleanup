@@ -20,8 +20,10 @@ func _process(_delta: float) -> void:
 		attack()
 
 func _ready():
+	GameManager.damage_taken = 0
 	health = max_health
 	GameManager.player = self
+	
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -72,11 +74,11 @@ func attack():
 	$PlayerAnimator.animation_player.play("Attack")
 
 func take_damage(damage_amount : int):
+	
 	if can_take_damage:
 		iframes()
-		
+		GameManager.damage_taken += 1
 		health -= damage_amount
-	
 	if health <= 0:
 		die()
 		

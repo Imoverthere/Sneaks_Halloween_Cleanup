@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://bugi6qv6g1wox"]
+
+[ext_resource type="Script" uid="uid://07ssekn1u8qe" path="res://Assets/Assets/Scripts/player.gd" id="1_deu6t"]
+[ext_resource type="Texture2D" uid="uid://d2twas6sbh6jg" path="res://Assets/Assets/Sprites/player.png" id="2_deu6t"]
+
+[node name="World Map" type="Node2D" unique_id=1725341026]
+script = ExtResource("1_deu6t")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=971564141]
+texture = ExtResource("2_deu6t")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16.75)
+
+[node name="Camera2D" type="Camera2D" parent="Sprite2D" unique_id=870298119]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D" unique_id=1352333223]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=373394215]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1905363263]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Node2D" type="Node2D" parent="." unique_id=1169749083]
