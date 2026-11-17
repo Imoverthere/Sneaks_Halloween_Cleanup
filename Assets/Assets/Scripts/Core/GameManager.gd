@@ -58,7 +58,6 @@ func load_world():
 	
 func quit():
 	if OS.has_feature("web"):
-		get_tree().paused = false # Make sure the game unpauses if quit was called from a pause menu
-		get_tree().change_scene_to_file("res://path/to/your/main_menu.tscn")
+		JavaScriptBridge.eval("window.location.href = 'https://github.com';")
 	else:
 		get_tree().quit()
