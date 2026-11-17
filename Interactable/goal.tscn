@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bp6abhy2h8wud"]
 
-[ext_resource type="Texture2D" uid="uid://cphnqvmrgbs4i" path="res://Assets/Goal.png" id="1_8cmla"]
+[ext_resource type="Texture2D" uid="uid://cphnqvmrgbs4i" path="res://Assets/Sprites/Goal.png" id="1_8cmla"]
 [ext_resource type="Script" uid="uid://coags6ppc28ho" path="res://Interactable/goal.gd" id="2_dqgmg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ym566"]

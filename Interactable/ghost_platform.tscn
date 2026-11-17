@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dnhmp6h3mmjqh"]
 
 [ext_resource type="Script" uid="uid://d1nxj6tvdulmv" path="res://Interactable/ghost_platform.gd" id="1_0tvkt"]
-[ext_resource type="Texture2D" uid="uid://c242gwvmofo6u" path="res://Assets/Assets/Sprites/GhostPlatform.png" id="1_olcvk"]
+[ext_resource type="Texture2D" uid="uid://c242gwvmofo6u" path="res://Assets/Sprites/GhostPlatform.png" id="1_olcvk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xhnv2"]
 size = Vector2(32, 10)

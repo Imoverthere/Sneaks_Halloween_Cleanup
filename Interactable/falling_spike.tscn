@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://21qufx0y53x7"]
 
 [ext_resource type="Script" uid="uid://otpg1818pxk2" path="res://Interactable/falling_spike.gd" id="1_k7shb"]
-[ext_resource type="Texture2D" uid="uid://vxpx4jvlwa6b" path="res://Assets/Assets/Sprites/FallingSpike.png" id="1_tqp80"]
+[ext_resource type="Texture2D" uid="uid://vxpx4jvlwa6b" path="res://Assets/Sprites/FallingSpike.png" id="1_tqp80"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xhnv2"]
 size = Vector2(16, 114)

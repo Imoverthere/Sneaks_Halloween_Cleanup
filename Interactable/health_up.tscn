@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cgi7kgw62hrms"]
 
 [ext_resource type="Script" uid="uid://bl43e674undjl" path="res://Interactable/health_up.gd" id="1_t77tn"]
-[ext_resource type="Texture2D" uid="uid://vvhc38oat5rj" path="res://Assets/HealthItem.png" id="2_y8k2k"]
+[ext_resource type="Texture2D" uid="uid://vvhc38oat5rj" path="res://Assets/Sprites/HealthItem.png" id="2_y8k2k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xhnv2"]
 size = Vector2(9, 12)

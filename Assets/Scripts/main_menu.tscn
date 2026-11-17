@@ -1,0 +1,239 @@
+[gd_scene format=3 uid="uid://b2j1eel6divdp"]
+
+[ext_resource type="Script" uid="uid://b2ujke7c2kfs8" path="res://Assets/Scripts/main_menu.gd" id="1_nc2hy"]
+[ext_resource type="Texture2D" uid="uid://bs3vqu7wsduf4" path="res://Assets/Scripts/Screenshot 2026-11-06 at 11.35.08 AM.png" id="2_52quk"]
+[ext_resource type="FontFile" uid="uid://p3t0ggwmpt1q" path="res://Assets/Fonts/Cairopixel.ttf" id="3_nc2hy"]
+[ext_resource type="Script" uid="uid://cgdw1bhibnjvy" path="res://Player/player_speed.gd" id="4_nc2hy"]
+[ext_resource type="Script" uid="uid://b0bkoc7kts6lh" path="res://Assets/Scripts/brightness.gd" id="5_275x2"]
+[ext_resource type="Script" uid="uid://mnrk5dil3p0r" path="res://Assets/Scripts/check_box.gd" id="6_2ywh3"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xhnv2"]
+texture = ExtResource("2_52quk")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xhnv2"]
+bg_color = Color(0.8784314, 0.5294118, 0.1764706, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(1, 0)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_xhnv2"]
+color = Color(1, 1, 1, 1)
+thickness = 5
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_fxe0o"]
+color = Color(0.8784314, 0.5254902, 0.1764706, 1)
+thickness = 5
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_2g7vl"]
+color = Color(0.8784314, 0.5254902, 0.1764706, 1)
+thickness = 5
+
+[node name="MainMenu" type="Control" unique_id=331411707]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 31.0
+offset_top = 38.0
+offset_right = 31.0
+offset_bottom = 38.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nc2hy")
+
+[node name="Background" type="Panel" parent="." unique_id=807082007]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -31.0
+offset_top = -39.0
+offset_right = -31.0
+offset_bottom = -39.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_xhnv2")
+
+[node name="MenuBoxes" type="VBoxContainer" parent="." unique_id=1738764031]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -165.75
+offset_top = -105.5
+offset_right = 165.75
+offset_bottom = 191.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 13
+
+[node name="Start" type="Button" parent="MenuBoxes" unique_id=154119903]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/h_separation = 31
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_xhnv2")
+text = "Start Game"
+
+[node name="Options" type="Button" parent="MenuBoxes" unique_id=1168010842]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/h_separation = 31
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_xhnv2")
+text = "Options"
+
+[node name="Title" type="Label" parent="." unique_id=99049295]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -475.5
+offset_top = 59.0
+offset_right = 475.5
+offset_bottom = 153.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.4627451)
+theme_override_constants/shadow_offset_x = 5
+theme_override_fonts/font = ExtResource("3_nc2hy")
+theme_override_font_sizes/font_size = 100
+text = "Sneak's Halloween Cleanup"
+
+[node name="Options Menu" type="Panel" parent="." unique_id=714042040]
+custom_minimum_size = Vector2(400, 350)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -204.0
+offset_top = -131.0
+offset_right = 196.0
+offset_bottom = 219.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Options" type="Label" parent="Options Menu" unique_id=317835442]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -198.0
+offset_right = 198.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_nc2hy")
+theme_override_font_sizes/font_size = 44
+text = "Options"
+horizontal_alignment = 1
+
+[node name="Return" type="Button" parent="Options Menu/Options" unique_id=349225379]
+layout_mode = 0
+offset_left = 112.0
+offset_top = 280.0
+offset_right = 289.0
+offset_bottom = 322.0
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/h_separation = 31
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_xhnv2")
+text = "Return"
+
+[node name="Speed Label" type="Label" parent="Options Menu" unique_id=30090273]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -196.0
+offset_top = -115.0
+offset_right = 200.0
+offset_bottom = -73.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_nc2hy")
+theme_override_font_sizes/font_size = 34
+text = "Player Speed (For Testing)"
+horizontal_alignment = 1
+
+[node name="Player Speed" type="HSlider" parent="Options Menu" unique_id=1254540991]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -84.0
+offset_top = -75.0
+offset_right = 84.0
+offset_bottom = -51.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/slider = SubResource("StyleBoxLine_xhnv2")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_fxe0o")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_2g7vl")
+script = ExtResource("4_nc2hy")
+
+[node name="Brightness" type="HSlider" parent="Options Menu" unique_id=1588247634]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -73.0
+offset_top = 9.5
+offset_right = 91.0
+offset_bottom = 26.5
+grow_horizontal = 2
+grow_vertical = 2
+min_value = 0.5
+max_value = 1.3
+step = 0.01
+value = 1.0
+script = ExtResource("5_275x2")
+
+[node name="Brightness Label" type="Label" parent="Options Menu" unique_id=244712641]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -194.0
+offset_top = -34.0
+offset_right = 202.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_nc2hy")
+theme_override_font_sizes/font_size = 34
+text = "Brightness"
+horizontal_alignment = 1
+
+[node name="CheckBox" type="CheckBox" parent="Options Menu" unique_id=903881048]
+layout_mode = 0
+offset_left = 151.0
+offset_top = 232.0
+offset_right = 264.0
+offset_bottom = 263.0
+text = "Full Screen"
+script = ExtResource("6_2ywh3")
+
+[connection signal="pressed" from="MenuBoxes/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="MenuBoxes/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="Options Menu/Options/Return" to="." method="_on_return_pressed"]
+[connection signal="value_changed" from="Options Menu/Player Speed" to="." method="_on_player_speed_value_changed"]
+[connection signal="value_changed" from="Options Menu/Player Speed" to="Options Menu/Player Speed" method="_on_value_changed"]
+[connection signal="value_changed" from="Options Menu/Brightness" to="Options Menu/Brightness" method="_on_value_changed"]
+[connection signal="toggled" from="Options Menu/CheckBox" to="Options Menu/CheckBox" method="_on_toggled"]
