@@ -90,15 +90,6 @@ theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_xhnv2")
 text = "Options"
 
-[node name="Quit" type="Button" parent="MenuBoxes" unique_id=1172842684]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_constants/h_separation = 31
-theme_override_font_sizes/font_size = 30
-theme_override_styles/normal = SubResource("StyleBoxFlat_xhnv2")
-text = "Leave Game"
-
 [node name="Title" type="Label" parent="." unique_id=99049295]
 layout_mode = 1
 anchors_preset = 5
@@ -241,7 +232,6 @@ script = ExtResource("7_qe12f")
 
 [connection signal="pressed" from="MenuBoxes/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="MenuBoxes/Options" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="MenuBoxes/Quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="Options Menu/Options/Return" to="." method="_on_return_pressed"]
 [connection signal="value_changed" from="Options Menu/Player Speed" to="." method="_on_player_speed_value_changed"]
 [connection signal="value_changed" from="Options Menu/Player Speed" to="Options Menu/Player Speed" method="_on_value_changed"]

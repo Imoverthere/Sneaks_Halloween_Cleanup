@@ -49,3 +49,20 @@ func _process(delta):
 		await get_tree().create_timer(0.4).timeout
 		get_tree().change_scene_to_file("res://" + curr_level.name + ".tscn")
 		
+	if target_level and target_level.name in LevelData.level_dic and LevelData.level_dic[target_level.name]["unlocked"] and completed_movement:
+		completed_movement = false
+		player.get_node("$Player/AnimationPlayer").play("Run")
+		lerp_progress = 0.0
+		while lerp_progress < 1.0:
+			lerp_progress += lerp_speed + delta
+			lerp_progress.clamp(lerp_progress, 0.0, 1.0)
+			player.position = player.position.lerp(target_level.global_position, lerp_progress)
+			
+			if player.position.distance_to(target_level.global_position) < lerp_threshold:
+				break
+				
+			await get_tree().create_timer(delta).timeout
+		player.position = target_level.global_position
+		curr_level = target_level
+		player.get_node("AnimationPlayer").play("idle")
+		completed_movement = true
