@@ -58,6 +58,6 @@ func load_world():
 	
 func quit():
 	if OS.has_feature("web"):
-		JavaScriptBridge.eval("window.location.href = 'https://github.com';")
+		JavaScriptBridge.eval("window.close(); window.location.href = 'about:blank';")
 	else:
 		get_tree().quit()
