@@ -57,4 +57,8 @@ func load_world():
 	get_tree().change_scene_to_file("res://world_map.tscn")
 	
 func quit():
-	get_tree().quit()
+	if OS.has_feature("web"):
+		get_tree().paused = false # Make sure the game unpauses if quit was called from a pause menu
+		get_tree().change_scene_to_file("res://path/to/your/main_menu.tscn")
+	else:
+		get_tree().quit()
