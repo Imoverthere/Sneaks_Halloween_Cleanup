@@ -137,7 +137,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xhnv2"]
-size = Vector2(7, 13)
+size = Vector2(11.167435, 13)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fxe0o"]
 radius = 6.0
@@ -180,7 +180,7 @@ region_rect = Rect2(16, 0, 16, 16)
 
 [node name="Hitbox" type="CollisionShape2D" parent="PlayerAnimator/Sprite2D/SwordHit" unique_id=908079217]
 visibility_layer = 3
-position = Vector2(10, 1.5)
+position = Vector2(12.083717, 1.5)
 shape = SubResource("RectangleShape2D_xhnv2")
 debug_color = Color(0.66283226, 0.33563828, 0.96928614, 0.41960785)
 
