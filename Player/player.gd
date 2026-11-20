@@ -7,6 +7,7 @@ class_name PlayerController
 @export var jump_power = 10.0
 @export var friction: float = 800
 @export var attacking = false
+@export var double_jump : bool = false
 
 var speed_mult = 30.0
 var jump_mult = -30.0
@@ -14,6 +15,7 @@ var direction = 0
 var max_health = 2
 var health = 0
 var can_take_damage = true
+var jumps_done = 0
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("Attack"):
@@ -31,8 +33,13 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 
 	# Handle jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = jump_power * jump_mult
+	if  is_on_floor():
+		jumps_done = 0
+	if Input.is_action_just_pressed("jump"):
+		var max_jumps = 2 if GameManager.can_double_jump else 1
+		if jumps_done < max_jumps:
+			velocity.y = jump_power * jump_mult
+			jumps_done += 1
 
 	# Get the input direction and handle the movement/deceleration.
 	direction = Input.get_axis("move left", "move right")
@@ -61,13 +68,14 @@ func attack():
 	$PlayerAnimator.animation_player.play("Attack")
 	
 	var overlapping_objects = $PlayerAnimator/Sprite2D/SwordHit.get_overlapping_areas()
+	print("Overlapping areas: ", overlapping_objects)
 	
 	for area in overlapping_objects:
 		var parent = area.get_parent()
+		print("Area: ", area.name, " | Parent: ", parent.name, " | Has die: ", parent.has_method("die"))
 		
-		# Check if the target is an enemy and has a die function
 		if parent.has_method("die"):
-			parent.die() # This triggers the enemy's script, animation, and queue_free!
+			parent.die()
 
 	
 	attacking = true
@@ -99,4 +107,6 @@ func _input(event):
 func _on_sword_hit_area_entered(area: Area2D) -> void:
 	if area.is_in_group("hurtbox"):
 		area.take_damage()
+	elif area.is_in_group("unlockable"):
+		area.try_unlock()
 		

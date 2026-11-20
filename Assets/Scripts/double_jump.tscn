@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://d1hw13jn4ma5y"]
+
+[ext_resource type="Texture2D" uid="uid://d3bo0l6j8elsa" path="res://Assets/Sprites/double_jump.png" id="1_dkjpt"]
+[ext_resource type="Script" uid="uid://deof2lxwy8i04" path="res://Assets/Scripts/double_jump.gd" id="1_oy7qt"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xhnv2"]
+
+[node name="Double_Jump" type="Node2D" unique_id=24100833]
+script = ExtResource("1_oy7qt")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1819146028]
+texture = ExtResource("1_dkjpt")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=306573594]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=116696103]
+shape = SubResource("CircleShape2D_xhnv2")
